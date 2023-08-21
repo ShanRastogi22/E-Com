@@ -1,5 +1,5 @@
-import User from '../models/userModel.js'
-
+import User from '../models/userModel.js';
+import generateToken from '../config/generateToken.js';
 
 const registerUser = async(req,res) => {
     try {
@@ -33,9 +33,30 @@ const registerUser = async(req,res) => {
         console.log('error', error)
     }
 };
-const loginUser = (req,res) => {
-    console.log("this data comes from register api");
-    res.send("this data comes from login api");
+
+const loginUser = async(req,res) => {
+    try{
+        const {email, password} = req.body;
+        const user = await User.findOne({email, password});
+        // console.log('user', user)
+
+        if(user) {
+            res.status(200).json({
+                _id: user._id,
+                name: user.name,
+                about: user.about,
+                role: user.role,
+                token: generateToken(user._id)
+            })
+        }else {
+            res.status(401).json({
+                result: ' failed due to invalid username or password'
+            })
+        }
+
+    } catch(error) {
+        console.log(error);
+    }
 };
 
 export {registerUser, loginUser}; 

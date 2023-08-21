@@ -16,7 +16,7 @@ app.get("/api", (req , res) => (
     res.send("hello form shan e-com")
 ));
 
-app.use("/api/users", userRoutes)
+app.use("/api/users", userRoutes);
 
 const port = process.env.PORT || 7000;
 
