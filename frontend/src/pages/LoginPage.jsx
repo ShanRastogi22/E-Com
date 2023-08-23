@@ -1,25 +1,35 @@
 import React from 'react'
 import Header from '../components/Header'
-import { CardContent, CardActions, Button, TextField, FormControl } from '@mui/material'
-import {StyledCard} from './Style'
+import { CardContent, CardActions, Button, TextField, FormControl, Typography, } from '@mui/material'
+import { StyledCard, StyledDiv, StyledFormDiv } from './Style'
+
 
 const LoginPage = () => {
   return (
-    <div>
+    <diStyledDivv>
       <Header buttonName="Sign-Up" />
-      <StyledCard>
-        <CardContent>
-          <FormControl>
-          <TextField id="filled-basic" label="Name" variant="filled" />
-          </FormControl>
-        
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-      </StyledCard>
-    </div>
+      <StyledDiv>
+        <StyledCard>
+          <CardContent>
+            <Typography variant='h4' sx={{marginLeft: `10px`}}>Login</Typography>
+            <StyledFormDiv>
+            <FormControl sx={{ marginTop: `20px`}}>
+
+              <TextField id="filled-basic" label="Enter your Email" variant="filled" />
+
+            </FormControl>
+            <FormControl sx={{ marginTop: `20px`}}>
+              <TextField id="filled-basic" label="Enter your Password" variant="filled" />
+            </FormControl>
+            </StyledFormDiv>
+          </CardContent>
+          <CardActions>
+          <Button variant="contained" sx={{ marginLeft: `10px`}}>Login</Button>
+            
+          </CardActions>
+        </StyledCard>
+      </StyledDiv>
+    </diStyledDivv>
   )
 }
 
